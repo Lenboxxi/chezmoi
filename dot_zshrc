@@ -1,0 +1,17 @@
+# Vervollständigung initialisieren (Plugins brauchen compdef)
+autoload -Uz compinit && compinit
+
+# nvm erst beim ersten Aufruf von node/npm/nvm laden (schnellerer Shell-Start)
+export NVM_LAZY_LOAD=true
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
+# zoxide ersetzt cd: springt per Teilname in häufig besuchte Ordner
+eval "$(zoxide init zsh --cmd cd)"
+
+eval "$(starship init zsh)"
+
+for file in $HOME/.config/zsh_custom/*; do
+ source $file
+done

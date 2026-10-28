@@ -1,0 +1,3 @@
+csi() {
+ claude "ship it"
+}

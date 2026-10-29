@@ -19,7 +19,7 @@ One command turns a fresh Mac into a familiar, fast, good-looking terminal setup
 ## ✨ Highlights
 
 - 🚀 **Fast shell startup** - plugins via [antidote](https://antidote.sh), `nvm` loads lazily on first use.
-- 🎨 **Catppuccin Macchiato prompt** - [starship](https://starship.rs) with Kubernetes context, gcloud project and git info.
+- 🎨 **Catppuccin Macchiato everywhere** - [starship](https://starship.rs) prompt with Kubernetes context, gcloud project and git info, plus a matching iTerm2 profile.
 - 📂 **Smarter navigation** - [zoxide](https://github.com/ajeetdsouza/zoxide) replaces `cd` and jumps to folders by partial name.
 - 👀 **Prettier output** - [eza](https://eza.rocks) for `ls`, [bat](https://github.com/sharkdp/bat) for `cat`.
 - 🍺 **Reproducible apps** - every tool is declared in a global `Brewfile`.
@@ -40,8 +40,7 @@ brew bundle --global
 
 Open a new terminal and you are done 🎉
 
-> [!TIP]
-> Set your terminal font to **JetBrainsMono Nerd Font** (installed by the Brewfile) so icons in the prompt and in `ls` render correctly.
+iTerm2 picks up the **Catppuccin Macchiato** profile with **JetBrainsMono Nerd Font** automatically and uses it as the default for new windows.
 
 ## 🗂️ What's inside
 
@@ -50,6 +49,8 @@ Open a new terminal and you are done 🎉
 ├── dot_Brewfile                  → ~/.Brewfile            CLI tools and apps
 ├── dot_zshrc                     → ~/.zshrc               shell entry point
 ├── dot_zsh_plugins.txt           → ~/.zsh_plugins.txt     antidote plugin list
+├── private_Library/.../iTerm2/   → ~/Library/.../iTerm2/  iTerm2 colors and font
+├── run_onchange_after_*.sh       → (runs once)            sets the iTerm2 default profile
 ├── dot_config/
 │   ├── starship.toml             → ~/.config/starship.toml
 │   └── zsh_custom/               → ~/.config/zsh_custom/  aliases and functions
@@ -59,6 +60,17 @@ Open a new terminal and you are done 🎉
 ```
 
 Every file in `~/.config/zsh_custom/` is sourced automatically, so adding a new alias or function is as simple as dropping in a new `.sh` file.
+
+## 🖥️ iTerm2 profile
+
+The terminal look lives in an iTerm2 [Dynamic Profile](https://iterm2.com/documentation-dynamic-profiles.html), a plain JSON file that iTerm2 only reads and reloads live.
+It contains the colors of the official [Catppuccin Macchiato](https://github.com/catppuccin/iterm) theme and the JetBrains Mono Nerd Font.
+After `chezmoi apply`, a small script makes it the default profile.
+
+> [!NOTE]
+> Changes made in the iTerm2 settings window are not written back to the JSON.
+> To keep a tweak, add the matching key to `catppuccin-macchiato.json` instead.
+> The key names match those in an exported profile (*Settings → Profiles → Other Actions → Save Profile as JSON*).
 
 ## 🍺 Software
 

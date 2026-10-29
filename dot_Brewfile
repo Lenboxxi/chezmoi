@@ -14,8 +14,12 @@ brew "starship"
 brew "zoxide"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
+# Voice and text chat software
+cask "discord"
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Open-source code editor
 cask "visual-studio-code"
+vscode "catppuccin.catppuccin-vsc"
+npm "@caveman-ai/cli"

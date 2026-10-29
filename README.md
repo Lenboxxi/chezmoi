@@ -22,7 +22,7 @@ One command turns a fresh Mac into a familiar, fast, good-looking terminal setup
 - 🎨 **Catppuccin Macchiato everywhere** - [starship](https://starship.rs) prompt with Kubernetes context, gcloud project and git info, plus a matching iTerm2 profile.
 - 📂 **Smarter navigation** - [zoxide](https://github.com/ajeetdsouza/zoxide) replaces `cd` and jumps to folders by partial name.
 - 👀 **Prettier output** - [eza](https://eza.rocks) for `ls`, [bat](https://github.com/sharkdp/bat) for `cat`.
-- 🍺 **Reproducible apps** - every tool is declared in a global `Brewfile`.
+- 🍺 **Reproducible apps** - every tool, VS Code extension and global npm package is declared in a global `Brewfile`, refreshed every morning.
 - 🤖 **Claude Code ready** - global instructions and a custom `ship` skill for committing and pushing.
 
 ## 🚀 Quick start
@@ -86,6 +86,9 @@ After `chezmoi apply`, a small script makes it the default profile.
 | [Claude Code](https://claude.com/claude-code) | AI coding assistant in the terminal |
 | [iTerm2](https://iterm2.com) | terminal emulator |
 | [Visual Studio Code](https://code.visualstudio.com) | code editor |
+| [Catppuccin for VS Code](https://github.com/catppuccin/vscode) | matching VS Code theme |
+| [Discord](https://discord.com) | voice and text chat |
+| `@caveman-ai/cli` | global npm package |
 | JetBrains Mono Nerd Font | font with icon glyphs |
 
 ## 🔌 zsh plugins
@@ -111,7 +114,8 @@ After `chezmoi apply`, a small script makes it the default profile.
 | `lt` | `eza --tree --level=2 --icons` | two-level tree view |
 | `cat` | `bat --paging=never` | syntax-highlighted file output |
 | `cd <name>` | `zoxide` | jump to a frequently used folder by partial name |
-| `good-morning` | `brew update && brew upgrade && brew cleanup` | ☕ keep Homebrew fresh |
+| `good-morning` | `brew update && brew upgrade && brew cleanup && pkg-backup` | ☕ keep Homebrew fresh and back up the package list |
+| `pkg-backup` | `brew bundle dump --global --force` | write all installed packages to `~/.Brewfile` |
 | `csi` | `claude "ship it"` | commit and push the current branch via Claude Code |
 | `csim` | `claude "ship it, ... push directly to main"` | same, but straight to `main` |
 
@@ -124,6 +128,10 @@ chezmoi apply           # write changes to $HOME
 chezmoi cd              # jump into this repo to commit and push
 chezmoi update          # pull the latest changes and apply them
 ```
+
+> [!NOTE]
+> `pkg-backup` writes to `~/.Brewfile`, not to this repo.
+> Run `chezmoi re-add ~/.Brewfile` to bring newly installed packages into `dot_Brewfile` before committing.
 
 ---
 

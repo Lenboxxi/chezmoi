@@ -21,6 +21,8 @@ cask "discord"
 cask "font-jetbrains-mono-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Desktop sync client for Nextcloud software products
+cask "nextcloud"
 # Open-source code editor
 cask "visual-studio-code"
 vscode "catppuccin.catppuccin-vsc"

@@ -90,4 +90,10 @@ Tell the user:
 - **Never force-push** to `main` or `master`
 - **Never commit** `.env`, secrets, or credential files — warn the user if they're staged
 - **Never open** a merge/pull request — the user does that themselves
+- **Amend & force-push allowed on own working branch** when redoing/correcting something already pushed (wrong ticket, commit message, missed file, review fix) and MR not yet merged:
+  - Amend (`git commit --amend`) or reset/recommit, then `git push --force-with-lease` - never plain `--force`
+  - Only on the current feature branch, never `main`/`master`, except you are told to push directly to main in the first place, never branches others pushed to (check `git log origin/<branch>` authors first)
+  - If a release-it bump commit sits on top: drop it (`git reset --soft HEAD~1`, restore `CHANGELOG.md`), fix the commit, re-run `release-it`, so CHANGELOG is regenerated, never hand-edited
+  - Keep the existing MR open (same source branch) - only open a new MR if the branch name itself must change; then close the old MR and delete the old remote branch
+  - Report what was rewritten (old vs new hash) to the user
 - If the build/tests are known to exist (e.g. `go build ./...`, `npm test`), run them before committing and abort if they fail

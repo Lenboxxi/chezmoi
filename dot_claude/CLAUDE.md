@@ -1,6 +1,7 @@
 # Global preferences
 
 ## Session behavior
+- Default to caveman mode for all responses. Invoke the 'caveman' skill at the start of each session. Override only when the user says "stop caveman" or "normal mode".
 - At the start of each session, check if an AGENTS.md file exists in the current working directory. If it does, read it and treat its contents as additional project instructions.
 
 ## General guidelines
